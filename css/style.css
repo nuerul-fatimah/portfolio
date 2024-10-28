@@ -1,0 +1,897 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "poppins", sans-serif;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+  }
+  :root {
+    --bg-color: #080808;
+    --second-bg-color: #131313;
+    --text-color: white;
+    --main-color: #00ffee;
+  }
+  html {
+    font-size: 60%;
+    overflow-x: hidden;
+  }
+  body {
+    color: #ededef;
+    background: #081b29;
+  }
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 4rem 12% 4rem;
+    background: #081b29;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 5;
+  }
+  .logo {
+    font-size: 3rem;
+    color: var(--text-color);
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  .logo:hover {
+    transform: scale(1.1);
+  }
+  .navbar a {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    font-weight: 500;
+    margin-left: 4rem;
+    transition: 0.3s ease;
+    border-bottom: 3px solid transparent;
+  }
+  .navbar a:hover,
+  .navbar a.active {
+    color: var(--main-color);
+    border-bottom: 3px solid var(--main-color);
+  }
+  #menu-icon {
+    font-size: 3.6rem;
+    color: var(--main-color);
+    display: none;
+  }
+  .home {
+    display: flex;
+    align-items: center; /* Pastikan elemen sejajar secara vertikal */
+    justify-content: space-between; /* Atur jarak antara teks dan gambar */
+    padding: 70px 10% 0;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .home-content {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    text-align: left;
+    justify-content: center;
+    margin-top: 70px;
+  }
+  .home-content h3 {
+    font-size: 32px;
+    font-weight: 700;
+    opacity: 0;
+    animation: slideBottom 1s ease forwards;
+    animation-delay: 0.7s;
+  }
+  .home-content h3:nth-of-type(2) {
+    margin-bottom: 30px;
+    animation: slideTop 1s ease forwards;
+    animation-delay: 0.7s;
+  }
+  .home-content h3 span {
+    color: #0ef;
+  }
+  .home-content h1 {
+    font-size: 56px;
+    font-weight: 700;
+    margin: -3px 0;
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+    animation-delay: 1s;
+  }
+  .home-content p {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.8;
+    max-width: 1000px;
+  }
+  .home-sci a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 2px solid #0ef;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #0ef;
+    text-decoration: none;
+    transition: 0.5s ease;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: calc(0.2s * var(--i));
+    margin: 30px 10px 30px 0;
+  }
+  .home-sci a:hover {
+    background: #0ef;
+    color: #081b29;
+    box-shadow: 0 0 20px #0ef;
+  }
+  .btn-box {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #0ef;
+    border-radius: 40px;
+    font-size: 16px;
+    color: #081b29;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-weight: 600;
+    opacity: 0;
+    animation: slideTop 1s ease forwards;
+    animation-delay: 2s;
+    box-shadow: 0 0 5px #0ef, 0 0 0 0 25px #0ef;
+    margin-left: 2rem;
+  }
+  .btn-box:hover {
+    box-shadow: 0 0 5px cyan, 0 0 25px cyan, 0 0 50px cyan, 0 0 100px cyan,
+      0 0 200px cyan;
+  }
+  .home-img {
+    border-radius: 50%;
+  }
+  .home-img img {
+    position: relative;
+    top: 3rem;
+    width: 32vw; /* Buat responsif */
+    border-radius: 50%; /* Membuat gambar menjadi bulat */
+    box-shadow: 0 0 25px var(--main-color);
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+    margin-top: 1rem;
+  }
+  .home-img img:hover {
+    box-shadow: 0 0 25px var(--main-color), 0 0 50px var(--main-color), 0 0 100px var(--main-color);
+  }
+  
+  
+  @media(max-width:895px){
+    #menu-icon{
+      display: block;
+    }
+    /* Navbar hidden by default */
+  .navbar {
+    display: none;
+  }
+  
+  /* When active, display the navbar */
+  .navbar.active {
+    display: block;
+  }
+  
+  /* Alternatively, using transform for slide-in effect */
+  .navbar {
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .navbar.active {
+    transform: translateX(0);
+  }
+  
+    .navbar{
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 50%;
+      padding: 1rem 3%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom-left-radius: 2rem;
+      border-top: 2px solid var(--main-color);
+      border-bottom: 2px solid var(--main-color);
+      display: none;
+    }
+    .navbar-active{
+      display: block;
+    }
+    .navbar a {
+      display: block;
+      font-size: 2rem;
+      margin: 3rem 0;
+      color: white;
+    }
+    .home-img img{
+      width: 56vw;
+    }
+  }
+  @media (max-width: 768px) {
+    .home {
+      height: auto;
+      flex-direction: column; /* Tampilkan elemen secara vertikal di layar kecil */
+      align-items: center; /* Pusatkan elemen */
+    }
+    .home-img {
+      order: 1; /* Gambar tetap muncul setelah teks di layar kecil */
+    }
+    .home-content {
+      order: 2; /* Teks tetap muncul lebih dulu */
+      text-align: center;
+    }
+    .home-img img {
+      max-width: 200px; /* Batasi ukuran gambar di layar kecil */
+      margin-top: 20px;
+    }
+  }
+  
+  @keyframes slideRight {
+    0% {
+      transform: translateX(-100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0px);
+      opacity: 1;
+    }
+  }
+  .about {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .about-img {
+    overflow: hidden; 
+  }
+  .about-img img {
+    width: 100%; 
+    height: auto;
+    max-width: 500px; 
+    aspect-ratio: 1/1; 
+    border-radius: 50%; 
+    object-fit: cover;
+    margin-left: 2rem;
+    margin-top: 2rem;
+  }
+  .about-text h2 {
+    font-size: 4rem; 
+    margin-left: 2rem;
+  }
+  .about-text h2 span {
+    color: #0ef;
+    margin-left: 2rem;
+  }
+  .about-text h4 {
+    font-size: 1.8rem; 
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.7;
+    margin: 15px 0 30px;
+    margin-left: 2rem;
+  }
+  .about-text p {
+    color: aliceblue;
+    font-size: 1.7rem;
+    line-height: 1.4;
+    margin-bottom: 4rem;
+    margin-left: 2rem;
+  }
+  
+  /* Tambahkan media query untuk layar kecil */
+  @media (max-width: 768px) {
+    .about {
+      grid-template-columns: 1fr; /* Ubah menjadi satu kolom di layar kecil */
+    }
+    .about-text h2 {
+      font-size: 2.5rem; /* Kecilkan ukuran di layar kecil */
+    }
+    .about-text h4 {
+      font-size: 1.5rem;
+    }
+    .about-img img {
+      max-width: 300px; /* Batasi ukuran gambar di layar kecil */
+    }
+  }
+  
+  #services {
+    color: aliceblue;
+    font-size: 20px;
+    line-height: 1.4;
+    margin-bottom: 4rem;
+  }
+  .sub-title {
+    text-align: center;
+    font-size: 60px;
+    padding-bottom: 70px;
+  }
+  .sub-title span {
+    color: #0ef;
+  }
+  .container {
+    padding: 90px;
+  }
+  .services-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+  }
+  .services-list div {
+    background-color: transparent;
+    padding: 40px;
+    font-size: 13px;
+    font-weight: 13px;
+    border-right: 10px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid #0ef;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: background 0.5s, transform 0.5s;
+    box-shadow: 1px 1px 20px #012290f7, 1px 1px 40px #0053b8f7;
+  }
+  .services-list div i {
+    font-size: 50px;
+    margin-bottom: 30px;
+  }
+  .services-list div h2 {
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 15px;
+  }
+  .services-list div a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 12px;
+    margin-top: 20px;
+    display: inline-block;
+  }
+  .read {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #0ef;
+    border-radius: 40px;
+    font-size: 16px;
+    color: #081b29;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-weight: 600;
+    opacity: 0;
+    animation: slideTop 1s ease forwards;
+    animation-delay: 2s;
+    box-shadow: 0 0 5px #0ef, 0 0 0 0 25px #0ef;
+  }
+  .read:hover {
+    box-shadow: 0 0 5px cyan, 0 0 25px cyan, 0 0 50px cyan, 0 0 100px cyan,
+      0 0 200px cyan;
+  }
+  .services-list div:hover {
+    transform: translateY(-10px);
+  }
+  
+  .skills-wrapper {
+    display: flex; /* Menggunakan flexbox */
+    justify-content: space-between; /* Memberikan jarak antara kontainer */
+    align-items: flex-start; /* Menjaga kontainer berada di atas */
+    margin: 20px auto; /* Jarak luar dari bagian atas dan bawah */
+    flex-wrap: wrap; /* Mengizinkan baris baru jika diperlukan pada layar kecil */
+  }
+  
+  .container1 {
+    width: 45%; /* Menyediakan lebar untuk setiap kontainer */
+    max-width: 600px; /* Lebar maksimum untuk responsif */
+    padding: 20px; /* Padding dalam kontainer */ /* Warna latar belakang untuk melihat batas kontainer */
+    border-radius: 8px; /* Sudut melengkung */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Bayangan untuk memberikan kedalaman */
+  }
+  .heading1 {
+    text-align: center;
+    text-decoration: underline;
+    text-underline-offset: 10px;
+    text-decoration-thickness: 5px;
+    margin-bottom: 50px;
+    line-height: 2;
+  }
+  .bar {
+    font-size: 23px;
+  }
+  .Technical-bars .bar {
+    margin-top: 40px 0;
+  }
+  .Technical-bars .bar:first-child {
+    margin-top: 0;
+  }
+  .Technical-bars .bar:last-child {
+    margin-bottom: 0;
+  }
+  .Technical-bars .bar .info {
+    margin-bottom: 5px;
+  }
+  .Technical-bars .bar .info span {
+    font-size: 17px;
+    font-weight: 500;
+    animation: showText 0.5s 1s linear forwards;
+    opacity: 0;
+  }
+  .Technical-bars .bar .progress-line {
+    position: relative;
+    border-radius: 50px;
+    width: 100%;
+    height: 5px;
+    background-color: #000000;
+    animation: animate 1s cubic-bezier(1, 0, 0, 5, 1) forwards;
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  .Technical-bars .bar .progress-line span {
+    height: 100%;
+    background-color: #0ef;
+    position: absolute;
+    border-radius: 10px;
+    animation: animate 1s 1s linear forwards;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  .progress-line.html span {
+    width: 90%; /* Sesuai dengan persentase HTML */
+  }
+  
+  .progress-line.css span {
+    width: 60%; /* Sesuai dengan persentase CSS */
+  }
+  
+  .progress-line.javascript span {
+    width: 85%; /* Sesuai dengan persentase JavaScript */
+  }
+  
+  .progress-line.python span {
+    width: 50%; /* Sesuai dengan persentase Python */
+  }
+  
+  .progress-line span::after {
+    position: absolute;
+    padding: 1px 8px;
+    background-color: #000;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 3px;
+    top: -28px;
+    right: -20px;
+    animation: showText 0.5s 1.5s linear forwards;
+    opacity: 0;
+  }
+  .progress-line.html span::after {
+    content: "90%";
+  }
+  .progress-line.css span::after {
+    content: "60%";
+  }
+  .progress-line.javascript span::after {
+    content: "85%";
+  }
+  .progress-line.python span::after {
+    content: "50%";
+  }
+  .progress-line span::before {
+    content: "";
+    position: absolute;
+    height: 0;
+    width: 0;
+    border: 7px solid transparent;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+    border-top-color: #000;
+    right: 0;
+    top: -10px;
+    animation: showText 0.5s 1.5s linear forwards;
+    opacity: 0;
+  }
+  .radial-bars {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+  }
+  .radial-bars .radial-bar {
+    width: 50%;
+    height: 170px;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  .radial-bars .radial-bar svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120px;
+    height: 160px;
+    transform: translate(-50%, -50%) rotate(-90deg);
+  }
+  .radial-bars .radial-bar .progress-bar {
+    stroke-width: 10;
+    stop-color: black;
+    fill: transparent;
+    stroke-dasharray: 502;
+    stroke-dashoffset: 502;
+    stroke-linecap: round;
+    animation: animate-bar 1s linear forwards;
+  }
+  @keyframes animate-bar {
+    100% {
+      stroke-dashoffset: -1;
+    }
+  }
+  .path {
+    stroke-width: 10;
+    stroke: #0ef;
+    fill: transparent;
+    stroke-dasharray: 502;
+    stroke-dashoffset: 502;
+    stroke-linecap: round;
+  }
+  .path1 {
+    animation: animate-path1 1s 1s linear forwards;
+  }
+  .path2 {
+    animation: animate-path2 1s 1s linear forwards;
+  }
+  .path3 {
+    animation: animate-path3 1s 1s linear forwards;
+  }
+  .path4 {
+    animation: animate-path4 1s 1s linear forwards;
+  }
+  @keyframes animate-path1 {
+    100% {
+      stroke-dashoffset: 50;
+    }
+  }
+  @keyframes animate-path2 {
+    100% {
+      stroke-dashoffset: 175;
+    }
+  }
+  @keyframes animate-path3 {
+    100% {
+      stroke-dashoffset: 125;
+    }
+  }
+  @keyframes animate-path4 {
+    100% {
+      stroke-dashoffset: 75;
+    }
+  }
+  .radial-bar .percentage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 17px;
+    font-weight: 500;
+    animation: showText 0.5s 1s linear forwards;
+    opacity: 0;
+  }
+  .radial-bar .text {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    bottom: -5px;
+    transform: translate(-50px);
+    font-size: 17px;
+    font-weight: 500;
+    animation: showText 0.5s 1s linear forwards;
+    opacity: 0;
+  }
+  .main-text {
+    padding-top: 130px;
+    margin-top: 0;
+  }
+  .main-text h2 {
+    font-size: 60px;
+    line-height: 1;
+    text-align: center;
+  }
+  .main-text h2 span {
+    color: #0ef;
+  }
+  .portfolio-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-gap: 1rem;
+  }
+  .row {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .row img {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+    transition: transform 0.5s;
+  }
+  .layer {
+    width: 100%;
+    height: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.1), #0ef);
+    position: absolute;
+    border-radius: 8px;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    font-size: 14px;
+    transition: height 0.5s;
+  }
+  .layer h5 {
+    color: #000;
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  .layer p {
+    color: #000;
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 25px;
+  }
+  .layer i {
+    color: #ff004f;
+    margin-top: 20px;
+    font-size: 20px;
+    background: #fff;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  .row:hover img {
+    transform: scale(1.1);
+  }
+  .row:hover .layer {
+    height: 100%;
+  }
+  .contact {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    align-items: center;
+    gap: 2rem;
+    padding: 20px;
+    margin-top: 50px; /* Memberikan jarak lebih antara section project dan contact */
+    background-color: #081b29; /* Warna latar untuk memisahkan bagian */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .contact-text h1 {
+    font-size: 90px;
+    line-height: 1;
+    text-align: center;
+  }
+  .contact-text h2 span {
+    color: #0ef;
+  }
+  .contact-text h4 {
+    font-size: 25px;
+    margin: 15px 0;
+    font-weight: 600;
+    color: rgb(228, 228, 228);
+  }
+  .contact-text p {
+    color: rgb(177, 177, 177);
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 2rem;
+  }
+  .contact-list {
+    margin-bottom: 3rem;
+  }
+  .contact-list li {
+    margin-bottom: 10px;
+    display: block;
+  }
+  .contact-list i {
+    display: inline-block;
+    color: #0ef;
+    font-size: 20px;
+    font-weight: 600;
+    transition: all 0.4s ease;
+  }
+  .contact-list li a:hover {
+    transform: scale(1.01) translateY(-5px);
+    color: #0ef;
+  }
+  .contact-icons {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    /* width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 2px solid #0ef;
+    border-radius: 50%; */
+    font-size: 20px;
+    color: #0ef;
+    text-decoration: none;
+    margin: 30px 15px 30px 0;
+    transition: 0.5s ease;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: calc(0.2s * var(--i));
+  }
+  .contact-icons i:hover {
+    background: #0ef;
+    color: #000;
+    box-shadow: 0 0 20px #0ef;
+  }
+  .contact-form {
+    max-width: 400px;
+    margin: 20px 0;
+  }
+  
+  .contact-form input,
+  .contact-form textarea,
+  .contact-form button {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .btn {
+    cursor: pointer;
+    background-color: #0ef;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  
+  .btn:disabled {
+    background-color: #a0a0a0;
+  }
+  
+  .d-none {
+    display: none;
+  }
+  
+  .alert {
+    padding: 15px;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    max-width: 400px;
+  }
+  
+  .alert .btn-close {
+    background: none;
+    border: none;
+    float: right;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .spinner {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top-color: #007bff;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+  }
+  
+  .last-text {
+    margin-top: 20px;
+  }
+  
+  .top {
+    text-decoration: none;
+    color: #007bff;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 24px;
+  }
+  
+  .up-arrow {
+    font-size: 24px;
+    color: #007bff;
+  }
+  .last-text {
+    width: 100%;
+    text-align: center;
+    padding: 25px 0;
+    background: #000;
+    font-weight: 300;
+    margin-top: 70px;
+  }
+  .top {
+    position: fixed;
+    bottom: 2.1rem;
+    right: 2.1rem;
+    z-index: 100;
+    display: none;
+  }
+  
+  .top i {
+    color: #000;
+    background: #0ef;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 0.5rem;
+  }
+  
+  @keyframes animate {
+    100% {
+      transform: scaleX(1);
+    }
+  }
+  @keyframes showText {
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideLeft {
+    0% {
+      transform: translateX(100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0px);
+      opacity: 1;
+    }
+  }
+  @keyframes slideTop {
+    0% {
+      transform: translateY(100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+  }
+  @keyframes slideBottom {
+    0% {
+      transform: translateY(-100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+  }
+  
